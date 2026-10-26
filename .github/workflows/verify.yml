@@ -1,5 +1,4 @@
 name: Verify CI-CD Stack
-
 on: 
   push:
       branches: [ "main" ]
