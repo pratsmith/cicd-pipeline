@@ -1,16 +1,19 @@
 name: Verify CI-CD Stack
 
-on: [push] 
-
+on: 
+  push:
+      branches: [ "main" ]
+    workflow_dispatch:
+    
 jobs:
   health-check:
-  runs-on: self-hosted
-  steps:
-  - name: Checkout Code
-  uses: actions/checkout@v4
+    runs-on: self-hosted
+    steps:
+      -name: Checkout Code
+      uses: actions/checkout@v4
 
-  -name: Test Docker Access
-  run: docker run --rm hello-world
+      -name: Test Docker Access
+      run: docker run --rm hello-world
 
-  -name: Test kubernetes Access
-  run: kubectl cluster-info
+      -name: Test kubernetes Access
+      run: kubectl cluster-info
