@@ -1,0 +1,16 @@
+YAML
+
+name: Verify CI-CD Stack
+
+on: [push]
+
+jobs:
+health-check:
+runs on: self-hosted
+steps:
+-name: Checkout Code
+uses: actions/checkout@v4
+-name: test docker access
+run: docker run --rm hello-world
+-name: test kubernetes Access
+run: kubectl cluster-info
